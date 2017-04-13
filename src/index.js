@@ -1,4 +1,4 @@
-const makeDebug = require('debug');
+// const makeDebug = require('debug');
 // const debug = makeDebug('feathers-fs');
 const p = require('path');
 const fs = require('fs');
