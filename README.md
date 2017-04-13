@@ -60,8 +60,8 @@ The `readFromFile` method is used to read the file at `path` and format it as an
   - `path {String}` - the full file path of the file to be read, including the `options.root`.
 It must return a promise that resolves to an object literal.
 
-### `toString(data) -> promise`
-The `toString` method is used to convert the provided `data` into a string to be written to disk.
+### `toFileString(data) -> promise`
+The `toFileString` method is used to convert the provided `data` into a string to be written to disk.
   - `data {Object}` - the object literal containing the data that will be formatted.
 It must return a promise that resolves to a string.
 
@@ -91,7 +91,7 @@ class CsvService extends BaseService {
     });
   }
 
-  toString (data) {
+  toFileString (data) {
     return new Promise((resolve, reject) => {
       // Use a node package to convert the data to a string.
       try {

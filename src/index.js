@@ -22,7 +22,7 @@ class Service {
     }
 
     let filePath = this.makeFilePath(path);
-    return this.toString(data)
+    return this.toFileString(data)
       .then(dataString => {
         return new Promise((resolve, reject) => {
           fs.writeFile(filePath, dataString, 'utf8', function (err) {
@@ -63,7 +63,7 @@ class Service {
   }
 
   // Input an object literal and output a string.
-  toString (data) {
+  toFileString (data) {
     return new Promise((resolve, reject) => {
       let formatted;
       try {
