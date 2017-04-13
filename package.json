@@ -6,7 +6,8 @@
   "main": "lib/",
   "keywords": [
     "feathers",
-    "feathers-plugin"
+    "feathers-plugin",
+    "json"
   ],
   "license": "MIT",
   "repository": {
