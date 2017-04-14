@@ -15,7 +15,7 @@ npm install feathers-fs --save
 ```
 
 ## Documentation
-The `feathers-js` module lets you use the FeathersJS service interface methods to read and write JSON-able data in the file system.  It creates `.json` files, by default, but is extendable to be able to read or write any text format that is serializable to/from JSON or a JavaScript object literal.  Here's a basic example:
+The `feathers-js` module lets you use the FeathersJS service interface methods to read and write JSON-able data in the file system.  It creates `.json` files, by default, but is extendable to be able to read or write [any text-based file format](#handling-other-file-types) that is serializable to/from JSON or a JavaScript object literal.  Here's a basic example:
 
 ```js
 const ffs = require('feathers-fs');
@@ -52,7 +52,7 @@ Reads a file from the provided path.
   - `path {String}` *required* - the full path, relative to the `options.root` of the file to be read.
 The `get` method returns a promise that resolves to the data that was read from the file.
 
-## Extending the Service
+## Handling Other File Types
 The service can be extended to handle file types other than `.json`.  When you create an instance of the service class, all attributes passed in the `options` will be available at `this.options`. Generally, both of the following methods will need to be overridden:
 
 ### `readFromFile(path) -> promise`
@@ -65,7 +65,7 @@ The `toFileString` method is used to convert the provided `data` into a string t
   - `data {Object}` - the object literal containing the data that will be formatted.
 It must return a promise that resolves to a string.
 
-### Example of Extending the Service
+### Example of Extending the Service for CSV
 
 Here's a stubbed-out example of what extending a CSV service would look like.
 
@@ -74,6 +74,7 @@ const BaseService = require('feathers-fs').Service;
 const fs = require('fs');
 
 class CsvService extends BaseService {
+  // Converts the CSV file to an object literal.
   readFromFile (path) {
     return new Promise((resolve, reject) => {
       // Use the path to read the file contents.
@@ -91,6 +92,7 @@ class CsvService extends BaseService {
     });
   }
 
+  // Converts an object literal to a string ready for storing to the file system.
   toFileString (data) {
     return new Promise((resolve, reject) => {
       // Use a node package to convert the data to a string.
@@ -113,12 +115,14 @@ const serviceOptions = {
 };
 const csvService = app.use('/json', new CsvService(serviceOptions);
 
+// Notice how the field names match the ones in the `fields` array.
 const tableData = {
   first: 'test1',
   second: 'test2',
   third: 'test3'
 };
 
+// Create the csv file.
 csvService.create({
   path: 'files/table-data.csv',
   data: tableData
