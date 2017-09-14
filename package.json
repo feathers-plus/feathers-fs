@@ -1,7 +1,7 @@
 {
   "name": "feathers-fs",
   "description": "A file system adapter for FeathersJS",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "homepage": "https://github.com/feathersjs/feathers-fs",
   "main": "lib/",
   "keywords": [
