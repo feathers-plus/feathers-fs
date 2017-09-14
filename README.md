@@ -35,6 +35,7 @@ Sets up the plugin with the provided `options`.
   - `options {Object}` - must contain a `root` param.
     - `root {String}` *required* - the root path for all files that will be read or written.
     - `type {String}` - the file type/extension that this service will handle. *default:* `json`.  When creating a file, if a file extension is not provided, this will be appended.
+    - `cache {Boolean}` - whether the require module cache should be used. *default:* `false`. By default, the require cache for the individual file will be cleared both before **and** after reading the file.
 
 ## Service API
 
@@ -132,7 +133,7 @@ csvService.create({
 
 ## Complete Example
 
-Here's an example of a Feathers server that uses `feathers-fs`. 
+Here's an example of a Feathers server that uses `feathers-fs`.
 
 ```js
 const feathers = require('feathers');

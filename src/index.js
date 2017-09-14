@@ -5,6 +5,7 @@ const fs = require('fs');
 
 const defaults = {
   root: undefined,
+  cache: false,
   type: 'json'
 };
 
@@ -13,7 +14,7 @@ class Service {
     if (!options.root) {
       throw new Error('You must provide a `root` path to the feathers-json adapter');
     }
-    this.options = options;
+    this.options = Object.assign({}, defaults, options);
   }
 
   create ({path, data}) {
@@ -54,12 +55,24 @@ class Service {
     return new Promise((resolve, reject) => {
       let data;
       try {
+        const shouldCache = this.options.cache;
+
+        shouldCache || this.clearCache(path);
         data = require(path);
+        shouldCache || this.clearCache(path);
         resolve(data);
       } catch (error) {
         reject(error);
       }
     });
+  }
+
+  /**
+   * Clears a module from the require cache.
+   * @param {String} path - The module path to be cleared from the require cache
+   */
+  clearCache (path) {
+    delete require.cache[require.resolve(path)];
   }
 
   // Input an object literal and output a string.
