@@ -48,9 +48,10 @@ Creates a file using the provided data.
     - `data {Object|Array}` *required* - The data to be written to the file.
 The `create` method returns a promise that resolves to the `data` that was written to file.
 
-### `get(path) -> Promise`
+### `get(path, params) -> Promise`
 Reads a file from the provided path.
   - `path {String}` *required* - the full path, relative to the `options.root` of the file to be read.
+  - `params.cache {Boolean}` - Whether or not this specific file lookup should use the `require` cache. Defaults to `options.cache`
 The `get` method returns a promise that resolves to the data that was read from the file.
 
 ## Handling Other File Types

@@ -37,13 +37,15 @@ class Service {
       });
   }
 
-  get (path) {
+  get (path, params = {}) {
+    const { cache } = params;
+
     if (!path) {
       return Promise.reject(new Error('You must pass a `path` to the feathers-json adapter\'s get method.'));
     }
     path = this.makeFilePath(path);
 
-    return this.readFromFile(path);
+    return this.readFromFile(path, { cache });
   }
 
   /**
@@ -51,11 +53,13 @@ class Service {
    * @param {String} path - The location of the file to be read.
    * @return Promise
    */
-  readFromFile (path) {
+  readFromFile (path, params = {}) {
+    const { cache } = params;
+
     return new Promise((resolve, reject) => {
       let data;
       try {
-        const shouldCache = this.options.cache;
+        const shouldCache = cache === undefined ? this.options.cache : cache;
 
         shouldCache || this.clearCache(path);
         data = require(path);
