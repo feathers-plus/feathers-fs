@@ -1,5 +1,8 @@
 # Change Log
 
+## [v1.0.0](https://github.com/feathersjs/feathers-fs/tree/v1.0.0) (2017-09-14)
+[Full Changelog](https://github.com/feathersjs/feathers-fs/compare/v0.0.3...v1.0.0)
+
 ## [v0.0.3](https://github.com/feathersjs/feathers-fs/tree/v0.0.3) (2017-04-14)
 [Full Changelog](https://github.com/feathersjs/feathers-fs/compare/v0.0.2...v0.0.3)
 
