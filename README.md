@@ -1,12 +1,8 @@
 # feathers-fs
 
-[![Build Status](https://travis-ci.org/feathersjs/feathers-fs.png?branch=master)](https://travis-ci.org/feathersjs/feathers-fs)
-[![Code Climate](https://codeclimate.com/github/feathersjs/feathers-fs/badges/gpa.svg)](https://codeclimate.com/github/feathersjs/feathers-fs)
-[![Test Coverage](https://codeclimate.com/github/feathersjs/feathers-fs/badges/coverage.svg)](https://codeclimate.com/github/feathersjs/feathers-fs/coverage)
-[![Dependency Status](https://img.shields.io/david/feathersjs/feathers-fs.svg?style=flat-square)](https://david-dm.org/feathersjs/feathers-fs)
-[![Download Status](https://img.shields.io/npm/dm/feathers-fs.svg?style=flat-square)](https://www.npmjs.com/package/feathers-fs)
+> This modules is deprecated. Use [feathers-blob](https://github.com/feathersjs-ecosystem/feathers-blob) instead.
 
-> Use the FeathersJS service interface to read and write data in the file system.
+Use the FeathersJS service interface to read and write data in the file system.
 
 ## Installation
 
